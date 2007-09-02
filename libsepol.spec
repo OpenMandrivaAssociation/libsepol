@@ -1,8 +1,7 @@
-
 Summary: SELinux binary policy manipulation library 
 Name: libsepol
 Version: 2.0.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group: System/Libraries
 Source: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
@@ -44,6 +43,7 @@ Summary: Header files and libraries used to build policy manipulation tools
 Group: Development/C
 Requires: %{mklibname sepol 1} = %{version}-%{release}
 Provides: sepol-devel = %{version}-%{release}
+Obsoletes: %{mklibname sepol 1 -d}
 
 %description -n %{mklibname sepol -d}
 The libsepol-devel package contains the libraries and header files
@@ -54,6 +54,7 @@ Summary: Static libraries used to build policy manipulation tools
 Group: Development/C
 Requires: %{mklibname sepol -d} = %{version}-%{release}
 Provides: sepol-static-devel = %{version}-%{release}
+Obsoletes: %{mklibname sepol 1 -d -s}
 
 %description -n %{mklibname sepol -d -s}
 The libsepol-devel package contains the static libraries
@@ -110,5 +111,3 @@ exit 0
 %files -n %{mklibname sepol -d -s}
 %defattr(-,root,root)
 %{_libdir}/libsepol.a
-
-%changelog
