@@ -7,7 +7,6 @@ Group: System/Libraries
 Source: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
 URL:	http://www.selinuxproject.org
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 %if 0
 #Provides: libsepol.so
 %endif
