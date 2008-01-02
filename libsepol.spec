@@ -1,15 +1,14 @@
 Summary: SELinux binary policy manipulation library 
 Name: libsepol
-Version: 2.0.1
-Release: %mkrel 2
+Version: 2.0.11
+Release: %mkrel 1
 License: GPL
 Group: System/Libraries
-Source: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
 URL:	http://www.selinuxproject.org
-
-%if 0
+Source0: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
+Source1: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz.sign
 #Provides: libsepol.so
-%endif
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
