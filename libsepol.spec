@@ -1,7 +1,7 @@
 Summary: SELinux binary policy manipulation library 
 Name: libsepol
-Version: 2.0.11
-Release: %mkrel 2
+Version: 2.0.25
+Release: %mkrel 1
 License: GPL
 Group: System/Libraries
 URL:	http://www.selinuxproject.org
