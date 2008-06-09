@@ -87,11 +87,15 @@ rm -rf %{buildroot}%{_mandir}/man8
 rm -rf %{buildroot}
 
 %post -n %{mklibname sepol 1}
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 [ -x /sbin/telinit ] && [ -p /dev/initctl ]  && /sbin/telinit U
 exit 0
 
+%if %mdkversion < 200900
 %postun -n %{mklibname sepol 1} -p /sbin/ldconfig
+%endif
 
 %files -n %{mklibname sepol 1}
 %defattr(-,root,root)
