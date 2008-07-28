@@ -6,7 +6,7 @@ License: GPL
 Group: System/Libraries
 URL:	http://www.selinuxproject.org
 Source0: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
-Source1: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz.sign
+#Source1: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz.sign
 #Provides: libsepol.so
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
