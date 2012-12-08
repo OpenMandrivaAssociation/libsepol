@@ -1,7 +1,7 @@
 Summary: SELinux binary policy manipulation library 
 Name: libsepol
 Version: 2.0.34
-Release: %mkrel 3
+Release: %mkrel 2
 License: GPL
 Group: System/Libraries
 URL:	http://www.selinuxproject.org
@@ -105,7 +105,8 @@ exit 0
 %defattr(-,root,root)
 %{_libdir}/libsepol.so
 %{_includedir}/sepol/*.h
-%exclude %{_mandir}/man3/*.3*
+# %exclude %{_mandir}/man3/*.3*
+%{_mandir}/man3/*.3*
 %dir %{_includedir}/sepol
 %dir %{_includedir}/sepol/policydb
 %{_includedir}/sepol/policydb/*.h
@@ -113,3 +114,53 @@ exit 0
 %files -n %{mklibname sepol -d -s}
 %defattr(-,root,root)
 %{_libdir}/libsepol.a
+
+
+%changelog
+* Sun Sep 13 2009 Thierry Vignaud <tvignaud@mandriva.com> 2.0.34-2mdv2010.0
++ Revision: 438739
+- rebuild
+
+* Sun Nov 30 2008 David Walluck <walluck@mandriva.org> 2.0.34-1mdv2009.1
++ Revision: 308330
+- 2.0.34
+
+* Mon Nov 24 2008 David Walluck <walluck@mandriva.org> 2.0.33-1mdv2009.1
++ Revision: 306134
+- 2.0.33
+
+* Mon Jul 28 2008 David Walluck <walluck@mandriva.org> 2.0.32-1mdv2009.0
++ Revision: 250775
+- don't include .sign file
+- 2.0.32
+
+* Sun Jul 27 2008 David Walluck <walluck@mandriva.org> 2.0.30-1mdv2009.0
++ Revision: 250494
+- 2.0.30
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Sun Apr 20 2008 David Walluck <walluck@mandriva.org> 2.0.25-1mdv2009.0
++ Revision: 195979
+- 2.0.25
+
+* Fri Jan 04 2008 David Walluck <walluck@mandriva.org> 2.0.11-2mdv2008.1
++ Revision: 145372
+- rebuild
+
+* Wed Jan 02 2008 David Walluck <walluck@mandriva.org> 2.0.11-1mdv2008.1
++ Revision: 140258
+- 2.0.11
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Mon Sep 03 2007 Funda Wang <fundawang@mandriva.org> 2.0.1-2mdv2008.0
++ Revision: 78417
+- Obsoletes old devel package
+
+* Sun Sep 02 2007 David Walluck <walluck@mandriva.org> 2.0.1-1mdv2008.0
++ Revision: 78359
+- Import libsepol
+
