@@ -8,7 +8,6 @@ URL:	http://www.selinuxproject.org
 Source0: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
 #Source1: http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz.sign
 #Provides: libsepol.so
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
@@ -67,10 +66,9 @@ sed -i 's/fpic/fPIC/g' src/Makefile
 
 %build
 %{make} clean
-%{make} CFLAGS="%{optflags}"
+%{make} CFLAGS="%{optflags}" CC=%{__cc}
 
 %install
-rm -rf %{buildroot}
 mkdir -p %{buildroot}/%{_lib} 
 mkdir -p %{buildroot}/%{_libdir} 
 mkdir -p %{buildroot}%{_includedir} 
@@ -83,26 +81,14 @@ rm -f %{buildroot}%{_bindir}/genpolusers
 rm -f %{buildroot}%{_bindir}/chkcon
 rm -rf %{buildroot}%{_mandir}/man8
 
-%clean
-rm -rf %{buildroot}
-
 %post -n %{mklibname sepol 1}
-%if %mdkversion < 200900
-/sbin/ldconfig
-%endif
 [ -x /sbin/telinit ] && [ -p /dev/initctl ]  && /sbin/telinit U
 exit 0
 
-%if %mdkversion < 200900
-%postun -n %{mklibname sepol 1} -p /sbin/ldconfig
-%endif
-
 %files -n %{mklibname sepol 1}
-%defattr(-,root,root)
 /%{_lib}/libsepol.so.1
 
 %files -n %{mklibname sepol -d}
-%defattr(-,root,root)
 %{_libdir}/libsepol.so
 %{_includedir}/sepol/*.h
 # %exclude %{_mandir}/man3/*.3*
@@ -112,7 +98,6 @@ exit 0
 %{_includedir}/sepol/policydb/*.h
 
 %files -n %{mklibname sepol -d -s}
-%defattr(-,root,root)
 %{_libdir}/libsepol.a
 
 
