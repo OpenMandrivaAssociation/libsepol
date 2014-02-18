@@ -1,7 +1,7 @@
 %define major	1
-%define libname libname %{major}
-%define devname libname -d
-%define statname libname -d -s
+%define libname %mklibname sepol %{major}
+%define devname %mklibname sepol -d
+%define statname %mklibname sepol -d -s
 
 Summary:	SELinux binary policy manipulation library 
 Name:		libsepol
