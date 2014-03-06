@@ -43,7 +43,6 @@ Summary:	Header files and libraries used to build policy manipulation tools
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	sepol-devel = %{version}-%{release}
-Obsoletes:	%{libname -d}
 
 %description -n %{devname}
 The libsepol-devel package contains the libraries and header files
@@ -54,7 +53,6 @@ Summary:	Static libraries used to build policy manipulation tools
 Group:		Development/C
 Requires:	%{devname} = %{version}-%{release}
 Provides:	sepol-static-devel = %{version}-%{release}
-Obsoletes:	%{libname -d -s}
 
 %description -n %{statname}
 The libsepol-devel package contains the static libraries
