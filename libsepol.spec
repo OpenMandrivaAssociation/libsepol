@@ -11,6 +11,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.selinuxproject.org
 Source0:	%{name}-%{version}.tar.gz
+BuildRequires:	flex
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
