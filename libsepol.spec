@@ -5,12 +5,12 @@
 
 Summary:	SELinux binary policy manipulation library 
 Name:		libsepol
-Version:	2.0.34
-Release:	9
-License:	GPLv2
+Version:	2.4
+Release:	1
+License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.selinuxproject.org
-Source0:	http://www.nsa.gov/selinux/archives/libsepol-%{version}.tgz
+Source0:	%{name}-%{version}.tar.gz
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
@@ -77,10 +77,8 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_mandir}/man3
 mkdir -p %{buildroot}%{_mandir}/man8
 %makeinstall_std LIBDIR="%{buildroot}%{_libdir}" SHLIBDIR="%{buildroot}/%{_lib}"
-rm -f %{buildroot}%{_bindir}/genpolbools
-rm -f %{buildroot}%{_bindir}/genpolusers
-rm -f %{buildroot}%{_bindir}/chkcon
-rm -rf %{buildroot}%{_mandir}/man8
+rm %{buildroot}%{_bindir}/chkcon
+rm -r %{buildroot}%{_mandir}/man8
 
 %post -n %{libname}
 [ -x /sbin/telinit ] && [ -p /dev/initctl ]  && /sbin/telinit U
@@ -91,8 +89,10 @@ exit 0
 
 %files -n %{devname}
 %{_libdir}/libsepol.so
+%{_libdir}/pkgconfig/libsepol.pc
 %{_includedir}/sepol/*.h
-# %exclude %{_mandir}/man3/*.3*
+%dir %{_includedir}/sepol/cil
+%{_includedir}/sepol/cil/*.h
 %{_mandir}/man3/*.3*
 %dir %{_includedir}/sepol
 %dir %{_includedir}/sepol/policydb
