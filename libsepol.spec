@@ -2,16 +2,18 @@
 %define libname %mklibname sepol %{major}
 %define devname %mklibname sepol -d
 %define statname %mklibname sepol -d -s
+# for static lib
+%define _disable_lto 1
 
 Summary:	SELinux binary policy manipulation library 
 Name:		libsepol
 Version:	2.4
-Release:	2
+Release:	3
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.selinuxproject.org
 Source0:	%{name}-%{version}.tar.gz
-BuildRequires:	flex
+BuildRequires:	flex-devel
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
