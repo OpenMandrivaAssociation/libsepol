@@ -7,12 +7,12 @@
 
 Summary:	SELinux binary policy manipulation library 
 Name:		libsepol
-Version:	2.4
-Release:	3
+Version:	2.8
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.selinuxproject.org
-Source0:	%{name}-%{version}.tar.gz
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/20180524/%{name}-%{version}.tar.gz
 BuildRequires:	flex-devel
 
 %description
@@ -79,7 +79,7 @@ mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_bindir} 
 mkdir -p %{buildroot}%{_mandir}/man3
 mkdir -p %{buildroot}%{_mandir}/man8
-%makeinstall_std LIBDIR="%{buildroot}%{_libdir}" SHLIBDIR="%{buildroot}/%{_lib}"
+%makeinstall_std LIBDIR="/%{_libdir}" SHLIBDIR="/%{_lib}"
 rm %{buildroot}%{_bindir}/chkcon
 rm -r %{buildroot}%{_mandir}/man8
 
@@ -103,4 +103,3 @@ exit 0
 
 %files -n %{statname}
 %{_libdir}/libsepol.a
-
