@@ -8,12 +8,12 @@
 
 Summary: 	SELinux binary policy manipulation library
 Name: 		libsepol
-Version: 	2.9
+Version: 	3.0
 Release: 	1
 License: 	GPL
 Group: 		System/Libraries
 URL:		http://www.selinuxproject.org
-Source0:	https://github.com/SELinuxProject/selinux/releases/download/20190315/libsepol-%{version}.tar.gz
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/20191204/libsepol-%{version}.tar.gz
 BuildRequires:	flex
 
 
