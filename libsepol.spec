@@ -1,21 +1,24 @@
-
 # major is the part of the library name after the .so
-%define major 1
-%define libname %mklibname sepol %{major}
+%define major 2
+%define libname %mklibname sepol
 %define develname %mklibname sepol -d
 %define stdevelname %mklibname sepol -d -s
 
+# For static lib
+%define _disable_lto 1
+
+# Work around build system deficiency
+%undefine _debugsource_packages
 
 Summary: 	SELinux binary policy manipulation library
 Name: 		libsepol
-Version: 	3.0
+Version: 	3.4
 Release: 	1
 License: 	GPL
 Group: 		System/Libraries
 URL:		http://www.selinuxproject.org
-Source0:	https://github.com/SELinuxProject/selinux/releases/download/20191204/libsepol-%{version}.tar.gz
+Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/libsepol-%{version}.tar.gz
 BuildRequires:	flex
-
 
 %description
 Security-enhanced Linux is a feature of the Linux® kernel and a number
@@ -67,11 +70,11 @@ The libsepol-devel package contains the static libraries
 needed for developing applications that manipulate binary policies.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make clean
-%make CFLAGS="%{optflags}" CC=%{__cc} LDFLAGS="%{ldflags}"
+%make CFLAGS="%{optflags}" CC=%{__cc} LDFLAGS="%{build_ldflags}"
 
 %install
 mkdir -p %{buildroot}/%{_lib}
@@ -87,6 +90,13 @@ rm -f %{buildroot}%{_bindir}/chkcon
 rm -rf %{buildroot}%{_mandir}/man8
 rm -rf %{buildroot}%{_mandir}/ru/man8
 
+%files
+%{_bindir}/sepol_check_access
+%{_bindir}/sepol_compute_av
+%{_bindir}/sepol_compute_member
+%{_bindir}/sepol_compute_relabel
+%{_bindir}/sepol_validate_transition
+
 %files -n %{libname}
 %{_libdir}/libsepol.so.%{major}
 
@@ -94,12 +104,7 @@ rm -rf %{buildroot}%{_mandir}/ru/man8
 %{_mandir}/man3/*.3.*
 %{_libdir}/libsepol.so
 %{_libdir}/pkgconfig/libsepol.pc
-%{_includedir}/sepol/*.h
-%{_includedir}/sepol/cil
-%dir %{_includedir}/sepol
-%dir %{_includedir}/sepol/policydb
-%{_includedir}/sepol/policydb/*.h
-%{_includedir}/sepol/cil/*.h
+%{_includedir}/sepol
 
 %files -n %{stdevelname}
 %{_libdir}/libsepol.a
