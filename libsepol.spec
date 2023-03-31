@@ -13,7 +13,7 @@
 Summary: 	SELinux binary policy manipulation library
 Name: 		libsepol
 Version: 	3.4
-Release: 	1
+Release: 	2
 License: 	GPL
 Group: 		System/Libraries
 URL:		http://www.selinuxproject.org
