@@ -74,7 +74,7 @@ needed for developing applications that manipulate binary policies.
 
 %build
 %make clean
-%make CFLAGS="%{optflags}" CC=%{__cc} LDFLAGS="%{build_ldflags}"
+%make CFLAGS="%{optflags}" CC="%{__cc}" LDFLAGS="%{build_ldflags}"
 
 %install
 mkdir -p %{buildroot}/%{_lib}
