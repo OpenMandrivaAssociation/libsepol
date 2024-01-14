@@ -13,7 +13,7 @@
 Summary: 	SELinux binary policy manipulation library
 Name: 		libsepol
 Version: 	3.6
-Release: 	1
+Release: 	2
 License: 	GPL
 Group: 		System/Libraries
 URL:		http://www.selinuxproject.org
@@ -89,6 +89,9 @@ rm -f %{buildroot}%{_bindir}/genpolusers
 rm -f %{buildroot}%{_bindir}/chkcon
 rm -rf %{buildroot}%{_mandir}/man8
 rm -rf %{buildroot}%{_mandir}/ru/man8
+
+# Get rid of -I/usr/include and -L/usr/lib64 nastiness
+sed -i -e '/^Cflags:/d' -e 's/-L\${libdir} //g' %{buildroot}%{_libdir}/pkgconfig/*.pc
 
 %files
 %{_bindir}/sepol_check_access
