@@ -16,7 +16,7 @@ Version: 	3.7
 Release: 	1
 License: 	GPL
 Group: 		System/Libraries
-URL:		http://www.selinuxproject.org
+URL:		https://www.selinuxproject.org
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/libsepol-%{version}.tar.gz
 BuildRequires:	flex
 
