@@ -18,6 +18,7 @@ License: 	GPL
 Group: 		System/Libraries
 URL:		https://www.selinuxproject.org
 Source0:	https://github.com/SELinuxProject/selinux/releases/download/%{version}/libsepol-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	flex
 
 %description
